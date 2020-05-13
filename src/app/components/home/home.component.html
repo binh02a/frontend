@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="page-title">
+    Posted offers
+  </h1>
+
+  <menu *ngIf="!loading" id="accordion">
+    <div *ngFor="let job of jobs; let idx = index">
+      <div class="card">
+        <div class="card-header" [id]="'ref_job_' + idx">
+          <h5 class="mb-0">
+            <button class="btn btn-link col-sm-10" data-toggle="collapse" [attr.data-target]="'#job_' + idx" aria-expanded="true"
+                    [attr.aria-controls]="'#ref_job_' + idx">
+              {{job.jobTitle}}
+              <span *ngIf="job?.accomodation" class="badge badge-pill badge-primary">Accomodation</span>
+              <span *ngIf="job?.bonus" class="badge badge-pill badge-info">Bonus</span>
+              <span *ngIf="job?.active" class="badge badge-pill badge-success">Open</span>
+            </button>
+            <button class="btn float-right btn-warning leftMargined" (click)="edit(job)">Edit</button>
+            <a [routerLink]="'/jobs/' + job.jobId" class="btn float-right btn-primary leftMargined">Details</a>
+          </h5>
+        </div>
+
+        <div [id]="'job_' + idx" class="collapse show" [attr.aria-labelledby]="'#ref_job_' + idx">
+          <div class="card-body">
+            <app-job-summary [job]="job"></app-job-summary>
+          </div>
+        </div>
+      </div>
+    </div>
+  </menu>
+
+  <div class="col text-center" *ngIf="loading">
+    <span class="spinner-border text-white"></span>
+  </div>
+</div>

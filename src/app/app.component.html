@@ -1,0 +1,30 @@
+<body>
+<div *ngIf="!inAction" class="portal">
+  <div class="portal-content">
+    <img style="width: 15vh; margin-bottom: 20px; min-width: 120px;" src="../assets/image/gjobwhite.gif" alt="great-job-logo">
+    <h1 class="text-white">Welcome to Great Job</h1>
+    <h2 class="text-white">Need work? Need People? Just click and connect</h2>
+    <div class="gate">
+      <div class="text-white grid-vertical">
+        <h3> I want to Hire </h3>
+        <button class="btn .btn-lg btn-warning" (click)="signup.show('employer')">Don't have account?</button>
+        <button class="btn .btn-lg btn-success" (click)="signin.show('Harold52@hotmail.com', 'password')">Employer Sign In</button>
+      </div>
+      <div class="ls"></div>
+      <div class="text-white grid-vertical">
+        <h3> I want to Work </h3>
+        <button class="btn .btn-lg btn-outline-warning" (click)="signup.show('employee')">Don't have account?</button>
+        <button class="btn .btn-lg btn-outline-success" (click)="signup.show('employee')">Employee Sign In</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-screen" *ngIf="inAction">
+  <app-sidebar id="sidebar" (logout)="removeToken()"></app-sidebar>
+  <app-topnav></app-topnav>
+  <router-outlet></router-outlet>
+</div>
+<app-signup #signup (signedUp)="openLogin($event)"></app-signup>
+<app-signin #signin (session)="saveSession($event)"></app-signin>
+</body>

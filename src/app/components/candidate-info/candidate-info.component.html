@@ -1,0 +1,35 @@
+<button *ngIf="likable" class="float-right bg-transparent" id="likeBtn" (click)="liked.emit(candidate.id)">
+  <i class="fa fa-2x fa-heart-o" id="heartIcon" style="color: red; padding: 10px;"></i>
+</button>
+
+<div class="row filled">
+  <div class="row" *ngIf="candidate?.lastName">
+    <i class="icon-inline fa fa-pencil-square"></i>
+    <div class="text-description">
+      {{candidate?.firstName}} {{candidate?.lastName}}
+    </div>
+  </div>
+  <div class="row" *ngIf="candidate?.payRateFrom">
+    <i class="icon-inline fa fa-gbp"></i>
+    <div class="text-description">
+      {{candidate?.payRateFrom}}
+    </div>
+  </div>
+  <div class="row padding6" *ngIf="candidate?.phoneNumber">
+    <i class="icon-inline fa fa-phone"></i>
+    <div class="text-description special">
+      {{candidate?.phoneNumber}}
+    </div>
+  </div>
+  <div class="row" *ngIf="candidate?.location">
+    <i class="icon-inline fa fa-globe"></i>
+    <div class="text-description">
+      {{candidate?.location?.address}}
+    </div>
+  </div>
+  <div class="row padding6" *ngIf="candidate?.bio">
+    <div class="text-description special">
+      {{candidate?.bio}}
+    </div>
+  </div>
+</div>

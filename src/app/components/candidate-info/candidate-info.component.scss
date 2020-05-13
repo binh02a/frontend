@@ -1,0 +1,8 @@
+#likeBtn {
+  outline: none;
+  border: none;
+}
+
+#likeBtn:hover #heartIcon:before {
+  content: "\f004";
+}

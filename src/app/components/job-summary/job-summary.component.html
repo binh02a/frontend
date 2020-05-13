@@ -1,0 +1,39 @@
+<div id=summary class="row filled">
+  <div class="row" *ngIf="job?.payRate">
+    <i class="icon-inline fa fa-gbp"></i>
+    <div class="text-description">
+      {{job?.payRate}}
+    </div>
+  </div>
+  <div class="row" *ngIf="job?.contactName">
+    <div class="col-sm-4">
+      <i class="icon-inline fa fa-address-book"></i>
+      <div class="text-description">{{job.contactName}}</div>
+    </div>
+    <div class="col-sm-4" *ngIf="job?.contactNumber">
+      <i class="icon-inline fa fa-phone"></i>
+      <div class="text-description">{{job.contactNumber}}</div>
+    </div>
+    <div class="col-sm-4" *ngIf="job?.contactEmail">
+      <i class="icon-inline fa fa-envelope"></i>
+      <div class="text-description">{{job.contactEmail}}</div>
+    </div>
+  </div>
+  <div class="row" *ngIf="job?.role?.roleName">
+    <i class="icon-inline fa fa-briefcase"></i>
+    <div class="text-description">
+      {{job?.role?.roleName}}
+    </div>
+  </div>
+  <div class="row" *ngIf="job?.workLocation?.address">
+    <i class="icon-inline fa fa-building"></i>
+    <div class="text-description">
+      {{job?.workLocation?.address}}
+    </div>
+  </div>
+  <div class="row padding6" *ngIf="job?.description">
+    <div class="text-description special">
+      {{job?.description}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="!loading" class="container">
+  <h2 class="row header">
+    {{job?.jobDetail?.jobTitle}}
+    <span *ngIf="job?.jobDetail?.accomodation" class="badge badge-pill badge-primary">Accomodation</span>
+    <span *ngIf="job?.jobDetail?.bonus" class="badge badge-pill badge-info">Bonus</span>
+    <span *ngIf="job?.jobDetail?.active" class="badge badge-pill badge-success">Open</span>
+
+    <button class="btn float-right btn-warning leftMargined" (click)="edit(job?.jobDetail)">Edit</button>
+  </h2>
+
+  <div id="jobInfo" class="row">
+    <app-job-summary [job]="job?.jobDetail"></app-job-summary>
+  </div>
+
+  <h2 class="row header">
+    Connections
+  </h2>
+
+  <tabset [justified]="true">
+    <tab heading="Matched" id="tab1">
+      <div *ngFor="let employee of job?.candidates?.matched || job?.candidates?.Matched" class="row candidate">
+        <app-candidate-info (liked)="liked($event)" class="w-100" [candidate]="employee"></app-candidate-info>
+      </div>
+    </tab>
+    <tab heading="Offered">
+      <div *ngFor="let employee of job?.candidates?.offered" class="row candidate">
+        <app-candidate-info (liked)="liked($event)" class="w-100" [likable]="false"
+                            [candidate]="employee"></app-candidate-info>
+      </div>
+    </tab>
+    <tab heading="Connections">
+      <div *ngFor="let employee of job?.candidates?.liked" class="row candidate">
+        <app-candidate-info (liked)="liked($event)" class="w-100" [candidate]="employee"></app-candidate-info>
+      </div>
+    </tab>
+  </tabset>
+</div>
+
+<div class="container text-center" *ngIf="loading">
+  <span class="spinner-border text-white"></span>
+</div>

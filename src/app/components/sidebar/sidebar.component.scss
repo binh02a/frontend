@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+menu {
+  margin: unset;
+  padding: unset;
+}
+
+nav {
+  width: 240px;
+  float: left;
+  -webkit-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+  -moz-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin-left: auto;
+  width: 60px;
+  padding: 18px 0;
+  background-color: rgba(100, 100, 100, .3);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #ddd;
+  background-size: 200% 100%;
+  background: #f4f5f6 90% 0;
+}
+
+a {
+  display: inline-block;
+  padding: 25px;
+  color: #454545;
+  text-align: left;
+  font-family: sans-serif;
+  text-decoration: none;
+  -webkit-transition: color .1s;
+  -moz-transition: color .1s;
+}
+
+a:hover {
+  color: #fff;
+  -webkit-transition: color .1s;
+  -moz-transition: color .1s;
+}
+
+#sidebar li:first-child {
+  border-top: none;
+}
+
+#sidebar li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background: #454545 0 0;
+}
+
+#toggle:checked ~ nav {
+  margin-left: -240px;
+}
+
+#signOutBtn {
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.icon {
+  display: inline-block;
+  padding-right: 15px;
+}

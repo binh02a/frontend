@@ -1,0 +1,92 @@
+<div bsModal
+     #employerSignupModal="bs-modal"
+     class="modal fade" tabindex="-1"
+     role="dialog"
+     [config]="{backdrop: 'static', keyboard: true}"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title centeredTitle">Register as an employer</h2>
+        <button type="button" class="close" (click)="employerSignupModal.hide()">
+          <i class="fa fa-times-circle"></i>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form (ngSubmit)="register()" #employerData="ngForm" ngNativeValidate>
+          <div class="form-group">
+            <div class="row">
+              <div>
+                <input ngModel type="text" maxlength="50" class="form-control" name="firstName" placeholder="First Name"
+                       required></div>
+              <div>
+                <input ngModel type="text" maxlength="50" class="form-control" name="lastName" placeholder="Last Name"
+                       required="required"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input ngModel type="email" class="form-control" name="email" placeholder="Email" required="required">
+          </div>
+          <div class="form-group">
+            <input ngModel class="form-control" name="companyName" placeholder="Company name" required="required">
+          </div>
+          <div class="form-group">
+            <input
+              ngModel
+              class="form-control"
+              name="companyNumber"
+              placeholder="Company number"
+              pattern="^\d+$"
+              title="A sequence of numbers"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input ngModel class="form-control" name="landline" placeholder="Land-line number">
+          </div>
+          <div class="form-group">
+            <input ngModel class="form-control" name="mobile" placeholder="Mobile number">
+          </div>
+          <div class="form-group">
+            <input ngModel type="url" class="form-control" name="website" placeholder="Company website">
+          </div>
+          <div class="form-group">
+            <input ngModel type="password" minlength="6" class="form-control" name="password" placeholder="Password" required="required">
+          </div>
+          <div class="form-group">
+            <input ngModel type="password" minlength="6" class="form-control" name="password2" placeholder="Confirm Password"
+                   required="required">
+          </div>
+          <div class="form-group padding6">
+            <label class="checkbox-inline">
+              <input type="checkbox" required="required">
+              I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>
+            </label>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">
+              <span *ngIf="loading" class="spinner-border"></span>
+              <span *ngIf="!loading">Register Now</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #employeeSignupModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title centeredTitle">Register as a candidate</h4>
+        <button type="button" class="close pull-right" (click)="employeeSignupModal.hide()" aria-label="Close">
+          <i class="fa fa-times-circle"></i>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        This is not yet supported. Sorry for the inconvience.
+      </div>
+    </div>
+  </div>
+</div>

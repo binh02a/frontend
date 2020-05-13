@@ -1,0 +1,63 @@
+<div class="container">
+  <h1 class="row page-title">
+    User profile
+  </h1>
+  <div class="container text-center" *ngIf="loading">
+    <span class="spinner-border text-white"></span>
+  </div>
+  <div class="profile-details" *ngIf="!loading">
+    <div class="no-flex">
+      <div class="col">
+        <label for="id">User Id: </label>
+        <p id="id">{{id}}</p>
+      </div>
+      <div class="col">
+        <label for="email">Registered email: </label>
+        <p id="email">{{email}}</p>
+      </div>
+    </div>
+    <form (submit)="updateData()" ngNativeValidate>
+      <div class="row">
+        <div class="col input-group">
+          <label for="firstName">First name: </label>
+          <input required class="flex-grow-1" id="firstName" name="firstName" [(ngModel)]="profile.firstName"/>
+        </div>
+        <div class="col input-group">
+          <label for="lastName">Last name: </label>
+          <input required class="flex-grow-1" id="lastName" name="lastName" [(ngModel)]="profile.lastName"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col input-group">
+          <label for="companyName">Company name: </label>
+          <input required class="flex-grow-1" id="companyName" name="companyName" [(ngModel)]="profile.companyName"/>
+        </div>
+        <div class="col input-group">
+          <label for="companyNumber">Company number: </label>
+          <input
+            required
+            pattern="^\d+$"
+            title="A sequence of numbers" class="flex-grow-1" id="companyNumber" name="companyNumber"
+            [(ngModel)]="profile.companyNumber"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col input-group">
+          <label for="landLine">Land line: </label>
+          <input type="tel" class="flex-grow-1" id="landLine" name="landLine" [(ngModel)]="profile.landline"/>
+        </div>
+        <div class="col input-group">
+          <label for="mobile">Mobile: </label>
+          <input type="tel" class="flex-grow-1" id="mobile" name="mobile" [(ngModel)]="profile.mobile"/>
+        </div>
+        <div class="col input-group">
+          <label for="website">Website: </label>
+          <input type="url" class="flex-grow-1" id="website" name="website" [(ngModel)]="profile.website"/>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-success">Update Information</button>
+      </div>
+    </form>
+  </div>
+</div>

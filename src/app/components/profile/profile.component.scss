@@ -1,0 +1,49 @@
+p {
+  display: inline;
+  padding-left: 10px;
+}
+
+label {
+  margin: unset;
+  align-self: center;
+  font-weight: bold;
+}
+
+input {
+  margin-left: 20px;
+  color: white;
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+  padding: 10px 0;
+}
+
+.profile-details{
+  padding: 50px;
+  border: 1px solid rgba($color: #ffffff, $alpha: 0.2);
+  background: rgba($color: #ffffff, $alpha: 0.05);
+  border-radius: 10px;
+  color: white;
+}
+
+.row{
+  display: flex;
+  flex-direction: column;
+}
+
+.no-flex{
+  display: flex;
+  flex-direction: row;
+}
+
+.col{
+  margin: 10px 0;
+}
+
+.row > button{
+  margin-top: 30px;
+}
+
+input:focus {
+  outline: none;
+}
