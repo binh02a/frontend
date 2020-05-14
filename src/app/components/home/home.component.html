@@ -3,6 +3,9 @@
     Posted offers
   </h1>
   <menu id="accordion" *ngIf="!loading">
+    <div class="create-job-cont">
+      <button class="btn btn-outline-light" [routerLink]="['/jobs/create']" routerLinkActive="router-link-active" >Create a job</button>
+    </div>
     <div *ngFor="let job of jobs; let idx = index">
       <div class="card">
         <div class="card-header" [id]="'ref_job_' + idx">

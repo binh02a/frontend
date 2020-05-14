@@ -3,11 +3,11 @@
 </div>
 <div class="container" *ngIf="!loading">
   <h1 class="row page-title">
-    Edit Job
+    {{(!job.jobId && 'Create a ' || 'Edit ') + 'Job'}}
   </h1>
 
   <form class="profile-details" ngNativeValidate (submit)="updateData()">
-    <div class="no-flex">
+    <div class="no-flex" *ngIf="job.jobId">
       <div class="col">
         <label for="id">Job Id: </label>
         <p id="id">{{job.jobId}}</p>
@@ -34,11 +34,11 @@
         <div>
           <label for="startDate">Start Date: </label>
           <input name="startDate" id="startDate" [matDatepicker]="myDatepicker" [(ngModel)]="job.startDate">
-          <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle style="color:white" [for]="myDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #myDatepicker></mat-datepicker>
         </div>
         <div>
-          <label for="payRate">Pay Rate: </label>
+          <label for="payRate">Pay Rate:</label>
           <input type="number" min="1" class="flex-grow-1" id="payRate" name="payRate" [(ngModel)]="job.payRate"/>
         </div>
       </div>
@@ -57,10 +57,24 @@
         <div style="display: flex;">
           <label for="role">Role: </label>
           <p id="role">
-            {{job.role.roleName}}
+            {{job?.role?.roleName}}
           </p>
         </div>
         <button type="button" class="btn btn-warning" (click)="chooseRole.show()">Choose Role</button>
+      </div>
+      <div style="display:grid; grid-template-columns: auto auto auto; grid-column-gap: 30px; align-self: center">
+        <div class="centerVertical">
+          <label for="bonus">Bonus: </label>
+          <input name="bonus" id="bonus" type="checkbox" [(ngModel)]="job.bonus" class="largerCheckbox"/>
+        </div>
+        <div class="centerVertical">
+          <label for="accomodation">Accomodation: </label>
+          <input name="accomodation" id="accomodation" type="checkbox" [(ngModel)]="job.accomodation"/>
+        </div>
+        <div class="centerVertical">
+          <label for="active">Active: </label>
+          <input name="active" id="active" type="checkbox" [(ngModel)]="job.active"/>
+        </div>
       </div>
     </div>
     <div class="row">

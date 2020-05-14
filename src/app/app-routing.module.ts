@@ -7,6 +7,7 @@ import {JobEditComponent} from './components/job-edit/job-edit.component';
 
 const routes: Routes = [
   {path: 'jobs', component: HomeComponent},
+  {path: 'jobs/create', component: JobEditComponent},
   {path: 'jobs/:id', component: JobDetailsComponent},
   {path: 'jobs/:id/edit', component: JobEditComponent},
   {path: 'profile', component: ProfileComponent},

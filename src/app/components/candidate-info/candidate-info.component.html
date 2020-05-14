@@ -3,10 +3,18 @@
 </button>
 
 <div class="row filled">
-  <div class="row" *ngIf="candidate?.lastName">
-    <i class="icon-inline fa fa-pencil-square"></i>
-    <div class="text-description">
-      {{candidate?.firstName}} {{candidate?.lastName}}
+  <div>
+    <div class="row" *ngIf="candidate?.lastName">
+      <i class="icon-inline fa fa-pencil-square"></i>
+      <div class="text-description">
+        {{candidate?.firstName}} {{candidate?.lastName}}
+      </div>
+    </div>
+    <div class="row" *ngIf="candidate?.distance">
+      <i class="icon-inline fa fa-car"></i>
+      <div class="text-description">
+        {{(+candidate?.distance).toFixed(2)}} miles away
+      </div>
     </div>
   </div>
   <div class="row" *ngIf="candidate?.payRateFrom">

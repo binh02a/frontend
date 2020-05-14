@@ -12,7 +12,6 @@ import {Employee, Job, JobDetails} from '../../models/Job.interface';
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent implements OnInit {
-
   constructor(
     private route: ActivatedRoute,
     private httpClient: DataService,

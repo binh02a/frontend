@@ -13,7 +13,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SigninComponent} from './components/signin/signin.component';
 import {HomeComponent} from './components/home/home.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
-import {TopNavigationComponent} from './components/topnav/topNavigation.component';
 import {JobSummaryComponent} from './components/job-summary/job-summary.component';
 import {JobDetailsComponent} from './components/job-details/job-details.component';
 import {DataService} from './services/data.service';
@@ -32,7 +31,6 @@ import {MatNativeDateModule} from '@angular/material/core';
     SigninComponent,
     HomeComponent,
     SidebarComponent,
-    TopNavigationComponent,
     JobSummaryComponent,
     JobDetailsComponent,
     CandidateInfoComponent,

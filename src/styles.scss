@@ -4,6 +4,10 @@
   border-radius: 1rem;
 }
 
+input[type="checkbox"] {
+  zoom: 1.5;
+}
+
 .portal {
   height: 100%;
   width: 100%;
@@ -189,4 +193,9 @@
   background: rgba($color: #ffffff, $alpha: 0.05);
   border-radius: 10px;
   color: white;
+}
+
+.centerVertical {
+  display: flex;
+  align-items: center;
 }

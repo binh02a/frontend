@@ -22,7 +22,6 @@
 
 <div id="main-screen" *ngIf="inAction">
   <app-sidebar id="sidebar" (logout)="removeToken()"></app-sidebar>
-  <app-topnav></app-topnav>
   <router-outlet></router-outlet>
 </div>
 <app-signup #signup (signedUp)="openLogin($event)"></app-signup>

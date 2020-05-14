@@ -22,7 +22,7 @@ export class JobEditComponent implements OnInit {
     private httpClient: DataService,
   ) {
     // navigation properties has to be called within constructors
-    this.job = this.router.getCurrentNavigation().extras.state as Job;
+    this.job = this.router.getCurrentNavigation().extras.state as Job || {};
   }
 
   @ViewChild('chooseRole') public chooseRole: ChooseRoleComponent;
@@ -39,13 +39,6 @@ export class JobEditComponent implements OnInit {
       this.job.roleId = this.job.role.roleId;
       return;
     }
-
-    this
-      .router
-      .navigate(['#'])
-      .catch((err) => {
-        this.toastr.error(get(err, 'error.message') || 'Apologize. Something happened ...');
-      });
   }
 
   public getRole = (role: Role) => {
@@ -58,10 +51,10 @@ export class JobEditComponent implements OnInit {
     this.loading = true;
     return this
       .httpClient
-      .post(`job/edit/${this.job.jobId}`, this.job)
+      .post(this.job.jobId && `job/edit/${this.job.jobId}` || 'job', this.job)
       .pipe(take(1))
       .subscribe(() => {
-        this.toastr.success('Job updated');
+        this.toastr.success('Job upserted');
         this.httpClient.get('job').pipe(take(1));
       }, (err) => {
         this.toastr.error(get(err, 'error.message') || 'Apologize. Something happened ...');

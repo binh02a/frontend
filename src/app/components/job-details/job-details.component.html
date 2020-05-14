@@ -36,7 +36,7 @@
         </app-candidate-info>
       </div>
     </tab>
-    <tab [heading]="'Offered (' + (job?.candidates?.offered?.length || 0) + ')'">
+    <tab [heading]="'Connections (' + (job?.candidates?.offered?.length || 0) + ')'">
       <div *ngFor="let employee of job?.candidates?.offered" class="row candidate">
         <app-candidate-info
           class="w-100"
@@ -45,7 +45,7 @@
         </app-candidate-info>
       </div>
     </tab>
-    <tab [heading]="'Connections (' + (job?.candidates?.liked?.length || 0) + ')'">
+    <tab [heading]="'Interested (' + (job?.candidates?.liked?.length || 0) + ')'">
       <div *ngFor="let employee of job?.candidates?.liked; let idx = index;" class="row candidate">
         <app-candidate-info
           (liked)="liked('connections', $event)"
