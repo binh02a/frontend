@@ -2,8 +2,7 @@
   <h1 class="page-title">
     Posted offers
   </h1>
-
-  <menu *ngIf="!loading" id="accordion">
+  <menu id="accordion" *ngIf="!loading">
     <div *ngFor="let job of jobs; let idx = index">
       <div class="card">
         <div class="card-header" [id]="'ref_job_' + idx">

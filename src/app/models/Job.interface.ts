@@ -1,12 +1,5 @@
 import {Location} from './Location.interface';
-
-export interface Role {
-  roleId: string;
-  roleName: string;
-  industryId: string;
-  description: string;
-}
-
+import {Role} from './Industry.interface';
 export interface Job {
   accomodation: boolean;
   active: boolean;
@@ -31,7 +24,6 @@ export interface JobDetails {
     available?: Employee[],
     offered?: Employee[],
     matched?: Employee[],
-    Matched?: Employee[]
   };
 }
 

@@ -4,7 +4,7 @@ import {DataService} from '../../services/data.service';
 import {take} from 'rxjs/operators';
 import {get} from 'lodash';
 import {ToastrService} from 'ngx-toastr';
-import {Job, JobDetails} from '../../models/Job.interface';
+import {Employee, Job, JobDetails} from '../../models/Job.interface';
 
 @Component({
   selector: 'app-job-details',
@@ -22,7 +22,7 @@ export class JobDetailsComponent implements OnInit {
 
   private jobId: string;
   public job: JobDetails;
-  public loading = false;
+  public loading: boolean;
 
   private getJob = () => {
     this.loading = true;
@@ -58,21 +58,23 @@ export class JobDetailsComponent implements OnInit {
       });
   };
 
-  public liked = (candidateId: string) => {
-    this.loading = true;
+  public liked = (origin: 'matched'|'connections', {candidate, idx}) => {
+    // Moving candidate to the new list ahead of time, since liked/ offered screen has no CTA
+    if (origin === 'matched') {
+      this.job.candidates.available.push(...this.job.candidates.matched.splice(idx, 1));
+    } else {
+      this.job.candidates.offered.push(...this.job.candidates.liked.splice(idx, 1));
+    }
 
     this
       .httpClient
-      .post(`job/${this.jobId}/offer/${candidateId}`)
+      .post(`job/${this.jobId}/offer/${candidate.id}`)
       .pipe(take(1))
       .subscribe(() => {
         this.toastr.success('Liked');
-        this.getJob();
       }, (err) => {
         this.toastr.error(get(err, 'error.message') || 'Apologize. Something happened ...');
-      })
-      .add(() => {
-        this.loading = false;
+        this.getJob();
       });
   };
 }

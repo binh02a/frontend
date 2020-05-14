@@ -21,8 +21,4 @@ export class JobSummaryComponent implements OnInit {
     this.headerId = `header-${this.id}`;
     this.refHeader = `#${this.headerId}`;
   }
-
-  public get json() {
-    return JSON.stringify(this.job);
-  }
 }

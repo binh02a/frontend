@@ -8,6 +8,17 @@ import {Employee} from '../../models/Job.interface';
 })
 export class CandidateInfoComponent {
   @Input() candidate: Employee;
+  @Input() idx: number;
   @Input() likable = true;
-  @Output() liked = new EventEmitter<string>();
+  @Output() liked = new EventEmitter<{
+    candidate: Employee;
+    idx: number;
+  }>();
+
+  public like = () => {
+    this.liked.emit({
+      candidate: this.candidate,
+      idx: this.idx,
+    });
+  };
 }

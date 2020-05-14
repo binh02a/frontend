@@ -1,0 +1,60 @@
+p {
+  padding: 0 10px;
+  text-align: center;
+  margin: unset;
+}
+
+label {
+  margin: unset;
+  align-self: center;
+  font-weight: bold;
+}
+
+input {
+  margin-left: 20px;
+  color: white;
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+  padding: 10px 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+app-google-places {
+  flex-grow: 1 !important;
+  margin-left: 0 !important;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.row > button {
+  margin-top: 30px;
+}
+
+.no-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.spec {
+  justify-content: space-between;
+}
+
+.inline {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

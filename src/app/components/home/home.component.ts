@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
   ) {}
 
-  public loading = false;
+  public loading: boolean;
   public jobs: Job[] = [];
 
   ngOnInit(): void {

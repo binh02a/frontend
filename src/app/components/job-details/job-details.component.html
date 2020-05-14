@@ -1,4 +1,4 @@
-<div *ngIf="!loading" class="container">
+<div class="container" *ngIf="!loading">
   <h2 class="row header">
     {{job?.jobDetail?.jobTitle}}
     <span *ngIf="job?.jobDetail?.accomodation" class="badge badge-pill badge-primary">Accomodation</span>
@@ -17,20 +17,42 @@
   </h2>
 
   <tabset [justified]="true">
-    <tab heading="Matched" id="tab1">
-      <div *ngFor="let employee of job?.candidates?.matched || job?.candidates?.Matched" class="row candidate">
-        <app-candidate-info (liked)="liked($event)" class="w-100" [candidate]="employee"></app-candidate-info>
+    <tab [heading]="'Matched (' + (job?.candidates?.matched?.length || 0) + ')'" id="tab1">
+      <div *ngFor="let employee of job?.candidates?.matched; let idx = index;" class="row candidate">
+        <app-candidate-info
+          (liked)="liked('matched', $event)"
+          class="w-100"
+          [idx]="idx"
+          [candidate]="employee">
+        </app-candidate-info>
       </div>
     </tab>
-    <tab heading="Offered">
+    <tab [heading]="'Liked (' + (job?.candidates?.available?.length || 0) + ')'">
+      <div *ngFor="let employee of job?.candidates?.available" class="row candidate">
+        <app-candidate-info
+          class="w-100"
+          [likable]="false"
+          [candidate]="employee">
+        </app-candidate-info>
+      </div>
+    </tab>
+    <tab [heading]="'Offered (' + (job?.candidates?.offered?.length || 0) + ')'">
       <div *ngFor="let employee of job?.candidates?.offered" class="row candidate">
-        <app-candidate-info (liked)="liked($event)" class="w-100" [likable]="false"
-                            [candidate]="employee"></app-candidate-info>
+        <app-candidate-info
+          class="w-100"
+          [likable]="false"
+          [candidate]="employee">
+        </app-candidate-info>
       </div>
     </tab>
-    <tab heading="Connections">
-      <div *ngFor="let employee of job?.candidates?.liked" class="row candidate">
-        <app-candidate-info (liked)="liked($event)" class="w-100" [candidate]="employee"></app-candidate-info>
+    <tab [heading]="'Connections (' + (job?.candidates?.liked?.length || 0) + ')'">
+      <div *ngFor="let employee of job?.candidates?.liked; let idx = index;" class="row candidate">
+        <app-candidate-info
+          (liked)="liked('connections', $event)"
+          class="w-100"
+          [idx]="idx"
+          [candidate]="employee">
+        </app-candidate-info>
       </div>
     </tab>
   </tabset>

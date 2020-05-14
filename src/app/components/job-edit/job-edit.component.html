@@ -1,9 +1,72 @@
-<div class="container">
+<div class="container text-center" *ngIf="loading">
+  <span class="spinner-border text-white"></span>
+</div>
+<div class="container" *ngIf="!loading">
   <h1 class="row page-title">
-    Edit job
+    Edit Job
   </h1>
 
-  <div class="filled">
-    {{json}}
-  </div>
+  <form class="profile-details" ngNativeValidate (submit)="updateData()">
+    <div class="no-flex">
+      <div class="col">
+        <label for="id">Job Id: </label>
+        <p id="id">{{job.jobId}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="jobTitle">Job Title: </label>
+        <input class="flex-grow-1" id="jobTitle" name="jobTitle" [(ngModel)]="job.jobTitle"/>
+      </div>
+      <div class="col">
+        <label for="contactName">Contact Name: </label>
+        <input class="flex-grow-1" id="contactName" name="contactName" [(ngModel)]="job.contactName"/>
+      </div>
+      <div class="col">
+        <label for="contactNumber">Contact Number: </label>
+        <input class="flex-grow-1" type="tel" id="contactNumber" name="contactNumber" [(ngModel)]="job.contactNumber"/>
+      </div>
+      <div class="col">
+        <label for="contactEmail">Contact Email: </label>
+        <input class="flex-grow-1" type="email" id="contactEmail" name="contactEmail" [(ngModel)]="job.contactEmail"/>
+      </div>
+      <div class="inline w-100">
+        <div>
+          <label for="startDate">Start Date: </label>
+          <input name="startDate" id="startDate" [matDatepicker]="myDatepicker" [(ngModel)]="job.startDate">
+          <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </div>
+        <div>
+          <label for="payRate">Pay Rate: </label>
+          <input type="number" min="1" class="flex-grow-1" id="payRate" name="payRate" [(ngModel)]="job.payRate"/>
+        </div>
+      </div>
+      <div class="col">
+        <label for="description">Job Description: </label>
+        <input class="flex-grow-1" id="description" name="description" [(ngModel)]="job.description"/>
+      </div>
+      <div class="col">
+        <label>Location: </label>
+        <app-google-places
+          [init]="job?.workLocation?.address"
+          (setAddress)="getAddress($event)">
+        </app-google-places>
+      </div>
+      <div class="col spec">
+        <div style="display: flex;">
+          <label for="role">Role: </label>
+          <p id="role">
+            {{job.role.roleName}}
+          </p>
+        </div>
+        <button type="button" class="btn btn-warning" (click)="chooseRole.show()">Choose Role</button>
+      </div>
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-success">Update Information</button>
+    </div>
+  </form>
 </div>
+
+<app-choose-role (newRole)="getRole($event)" #chooseRole></app-choose-role>

@@ -20,6 +20,10 @@ import {DataService} from './services/data.service';
 import {CandidateInfoComponent} from './components/candidate-info/candidate-info.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {JobEditComponent} from './components/job-edit/job-edit.component';
+import {ChooseRoleComponent} from './components/choose-role/choose-role.component';
+import {GooglePlacesComponent} from './components/google-places/google-places.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,8 +38,12 @@ import {JobEditComponent} from './components/job-edit/job-edit.component';
     CandidateInfoComponent,
     ProfileComponent,
     JobEditComponent,
+    ChooseRoleComponent,
+    GooglePlacesComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,

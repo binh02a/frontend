@@ -1,0 +1,20 @@
+.role-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.role-row >button{
+    margin: 10px 0;
+}
+
+.card{
+    margin-bottom: 20px;
+}
+
+.card-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
